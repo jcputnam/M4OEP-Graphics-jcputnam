@@ -7,6 +7,10 @@ using namespace std;
 GLdouble width, height;
 int wd;
 Guy tony;
+Guy enemy1;
+Guy enemy2;
+
+bool cont = true;
 
 
 void init() {
@@ -16,6 +20,17 @@ void init() {
     tony.setSize(2);
     tony.setCenter(250,250);
     tony.setColor(1,1,1,1);
+
+    enemy1.setSize(60);
+    enemy1.setCenter(400, 250);
+    enemy1.setColor(1,1,1,1);
+
+    enemy2.setSize(20);
+    enemy2.setCenter(100, 250);
+    enemy2.setColor(1,1,1,1);
+
+
+
 }
 
 /* Initialize OpenGL Graphics */
@@ -26,6 +41,8 @@ void initGL() {
 
 /* Handler for window-repaint event. Call back when the window first appears and
  whenever the window needs to be re-painted. */
+
+
 void display() {
     // Tell OpenGL to use the whole window for drawing
     glViewport(0, 0, width, height); // DO NOT CHANGE THIS LINE (unless you're on a Mac running Catalina)
@@ -44,8 +61,16 @@ void display() {
     /*
      * Draw here
      */
-    tony.draw();
+
+    if(tony.getRightX() >= enemy1.getLeftX() || tony.getLeftX() <= enemy2.getRightX())
+        cont = false;
     
+    if (cont){
+        tony.draw();
+    }
+        
+    enemy1.draw();
+    enemy2.draw();
     glFlush();  // Render now
 }
 
@@ -59,7 +84,8 @@ void kbd(unsigned char key, int x, int y)
             exit(0);
         }
         case 'w': {
-            tony.setSize(tony.getSize()+.1);
+            tony.move(0,1.6);
+            //tony.setSize(tony.getSize()+.1);
             break;
         }
         case 's': {
@@ -117,6 +143,8 @@ void mouse(int button, int state, int x, int y) {
 
 void timer(int dummy) {
     
+    enemy2.move(1,0);
+
     glutPostRedisplay();
     glutTimerFunc(30, timer, dummy);
 }
@@ -124,6 +152,7 @@ void timer(int dummy) {
 /* Main function: GLUT runs as a console application starting at main()  */
 int main(int argc, char** argv) {
     
+
     init();
     
     glutInit(&argc, argv);          // Initialize GLUT

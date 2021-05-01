@@ -19,16 +19,16 @@ double Guy::getSize() const{
 }
 
 double Guy::getLeftX() const{
-    return center.x + 4;
+    return center.x - 10;
 }
 double Guy::getRightX() const{
-    return center.x + 4;
+    return center.x + 10;
 }
 double Guy::getTopY() const{
-    return center.x + 4;
+    return center.x + 10*size;
 }
 double Guy::getBottomY() const{
-    return center.x + 4;
+    return center.x - 10*size;
 }
 
 void Guy::setSize(double h){
@@ -43,11 +43,6 @@ void Guy::draw() const{
     glColor3f(1,1,1);
     glBegin(GL_LINE_LOOP);
     //glVertex2i(center.x, center.y);
-    
-    
-    
-
-
     glVertex2i(center.x+10, center.y+10*size);
     glVertex2i(center.x+2, center.y);
     glVertex2i(center.x+10, center.y-10*size);
