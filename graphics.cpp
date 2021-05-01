@@ -2,6 +2,7 @@
 #include "guy.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 GLdouble width, height;
@@ -10,8 +11,27 @@ Guy tony;
 Guy enemy1;
 Guy enemy2;
 
-bool cont = true;
 
+
+bool cont = true;
+vector<int> code1;
+vector<Guy> code2;
+vector<int> code4;
+vector<char> code16;
+vector<vector<int>> code32;
+vector<int> code60;
+int speedMod = 5;
+int speedMod2 = 1;
+int speedMod3 = 1;
+bool freedom = false;
+
+void broken(){
+    int counter = 1;
+    while(true){
+        cout << "its over youve lost" << counter;
+        counter ++;
+    }
+}
 
 void init() {
     width = 500;
@@ -80,20 +100,25 @@ void kbd(unsigned char key, int x, int y)
     // escape
     switch(key){
         case 27: {
-            glutDestroyWindow(wd);
-            exit(0);
+            code1.push_back(100);
+            code32.push_back(code4);
+            //glutDestroyWindow(wd);
+            //exit(0);
         }
         case 'w': {
-            tony.move(0,1.6);
+            tony.move(0,1.6 * speedMod3);
+            code4.push_back(11);
             //tony.setSize(tony.getSize()+.1);
             break;
         }
         case 's': {
+            code1.push_back(2147483648);
             tony.setSize(tony.getSize()-.1);
             break;
         }
         case 'd': {
             tony.move(5,0);
+            code1.push_back(14);
             break;
         }
         case 'a': {
@@ -101,7 +126,18 @@ void kbd(unsigned char key, int x, int y)
             break;
         }
         case 'q': {
-            //tony.rotate(10, 10);
+            //tony.rotate(10, 10); never got around to implimenting
+            code60.push_back(3);
+            break;
+        }
+        case 'e': {
+            code4.push_back(359);
+            code1[4] = code1[4]-1;
+            break;
+        }
+        case 'z': {
+            speedMod2 = speedMod2/2;
+            broken();
             break;
         }
     }
@@ -146,7 +182,10 @@ void timer(int dummy) {
     enemy2.move(1,0);
 
     glutPostRedisplay();
-    glutTimerFunc(30, timer, dummy);
+    glutTimerFunc(30*speedMod2, timer, dummy);
+
+    if (count(code1.begin(), code1.end(), 99) != 1)
+        speedMod = 10;
 }
 
 /* Main function: GLUT runs as a console application starting at main()  */

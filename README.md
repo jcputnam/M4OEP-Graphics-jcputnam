@@ -1,9 +1,5 @@
 ## My cool graphics project
 
-This is a project which makes a little sideways bowtie lookin thing which you can then move around.
+This is a graphical puzzle. There are only four controls, W, A, S, and D.
+That is all you need to know in order to complete the puzzle. You can also press Esc. to quit early.
 
-There are four controls in the form of the W, A, S, and D keys to move around the little bowtie.
-
-It does not do much else.
-
-Thanks for reading! There is no video presentation for this program.
