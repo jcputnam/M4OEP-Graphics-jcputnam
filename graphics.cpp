@@ -78,9 +78,6 @@ void display() {
     
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); // DO NOT CHANGE THIS LINE
     
-    /*
-     * Draw here
-     */
 
     if(tony.getRightX() >= enemy1.getLeftX() || tony.getLeftX() <= enemy2.getRightX())
         cont = false;
@@ -102,6 +99,7 @@ void kbd(unsigned char key, int x, int y)
         case 27: {
             code1.push_back(100);
             code32.push_back(code4);
+            break;
             //glutDestroyWindow(wd);
             //exit(0);
         }
@@ -133,6 +131,7 @@ void kbd(unsigned char key, int x, int y)
         case 'e': {
             code4.push_back(359);
             code1[4] = code1[4]-1;
+            cout << code1[4];
             break;
         }
         case 'z': {
@@ -184,8 +183,8 @@ void timer(int dummy) {
     glutPostRedisplay();
     glutTimerFunc(30*speedMod2, timer, dummy);
 
-    if (count(code1.begin(), code1.end(), 99) != 1)
-        speedMod = 10;
+    if (count(code1.begin(), code1.end(), 99) != 0)
+        speedMod3 = 10;
 }
 
 /* Main function: GLUT runs as a console application starting at main()  */
