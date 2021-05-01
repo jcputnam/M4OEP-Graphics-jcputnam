@@ -1,0 +1,3 @@
+/home/lil-jim-jamo_o/Desktop/schooool/cs120/Graphics-Starter/CMakeFiles/rebuild_cache.dir
+/home/lil-jim-jamo_o/Desktop/schooool/cs120/Graphics-Starter/CMakeFiles/graphics.dir
+/home/lil-jim-jamo_o/Desktop/schooool/cs120/Graphics-Starter/CMakeFiles/edit_cache.dir
